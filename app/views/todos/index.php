@@ -13,6 +13,19 @@
             My ToDos <small ng-if="remaining()">({{ remaining() }}) remaining</small>
         </h3>
 
+        <form name="form" ng-submit="addTodo()">
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" name="newtodo" class="form-control" ng-model="newTodo" required />
+                    <span class="input-group-btn">
+                        <button ng-disabled="form.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Add</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.row -->
+        </form>
+
+        <hr>
+
         <div class="row">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todos">
