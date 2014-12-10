@@ -41,4 +41,16 @@ class TodosController extends \BaseController {
         }
     }
 
+    /**
+     * Update the completed status of a specific todo record.
+     *
+     * @param $id
+     */
+    public function update($id)
+    {
+        $todo = Todo::findOrFail($id);
+        $todo->completed = Input::get('completed');
+        $todo->save();
+    }
+
 }
