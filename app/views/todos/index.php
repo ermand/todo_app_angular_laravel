@@ -9,7 +9,9 @@
 <body>
 <div ng-controller="todoController" class="container">
     <div class="col-md-6">
-        <h3 class="page-header"> My ToDos </h3>
+        <h3 class="page-header">
+            My ToDos <small ng-if="remaining()">({{ remaining() }}) remaining</small>
+        </h3>
 
         <div class="row">
             <ul class="list-group">
