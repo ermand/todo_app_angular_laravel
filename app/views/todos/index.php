@@ -19,6 +19,7 @@
                     <input type="text" name="newtodo" class="form-control" ng-model="newTodo" required />
                     <span class="input-group-btn">
                         <button ng-disabled="form.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Add</button>
+                        <a href="#" ng-click="clearCompleted()" class="btn btn-warning"><span class="glyphicon glyphicon-ok-sign"></span> Clear Completed</a>
                     </span>
                 </div><!-- /input-group -->
             </div><!-- /.row -->

@@ -4,6 +4,11 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
        $scope.todos = todos;
     });
 
+    /**
+     * Show the cound of remaining todo items.
+     *
+     * @return int
+     */
     $scope.remaining = function () {
         var count = 0;
 
@@ -14,6 +19,9 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
         return count;
     }
 
+    /**
+     * Add new todo item.
+     */
     $scope.addTodo = function () {
         var newTodo = {
             title: $scope.newTodo,
@@ -22,9 +30,17 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
 
         $scope.todos.push(newTodo);
 
+        $scope.newTodo = ''
+
         $http.post('/api/todos', newTodo);
     }
 
+    /**
+     * Complete a todo item.
+     *
+     * @param  boolean event
+     * @param  int todoId
+     */
     $scope.completeTodo = function (event, todoId) {
         console.log(event);
         console.log(todoId);
@@ -34,5 +50,16 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
         }
 
         $http.post('/api/todos/' + todoId, status);
+    }
+
+    /**
+     * Clear completed todo items.
+     *
+     * @type object
+     */
+    $scope.clearCompleted = function() {
+        $scope.todos = $scope.todos.filter(function(item){
+            return !item.completed
+        });
     }
 }])
