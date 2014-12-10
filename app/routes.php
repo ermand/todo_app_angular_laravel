@@ -4,3 +4,8 @@ Route::get('/', function()
 {
 	return View::make('todos/index');
 });
+
+Route::group(['prefix' => 'api'], function()
+{
+    Route::get('todos', ['as' => 'todos.index', 'uses' => 'TodosController@index']);
+});

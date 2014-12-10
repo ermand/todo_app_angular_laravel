@@ -10,7 +10,9 @@ class TodosController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$todos = Todo::all();
+
+        return $todos;
 	}
 
 	/**
