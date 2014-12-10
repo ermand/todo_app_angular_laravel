@@ -10,7 +10,7 @@ class TodosController extends \BaseController {
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::orderBy('created_at')->get();
 
         return $todos;
     }
