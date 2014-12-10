@@ -13,4 +13,15 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
 
         return count;
     }
+
+    $scope.addTodo = function () {
+        var newTodo = {
+            title: $scope.newTodo,
+            completed: false
+        }
+
+        $scope.todos.push(newTodo);
+
+        $http.post('/api/todos', newTodo);
+    }
 }])
