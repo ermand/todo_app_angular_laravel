@@ -24,4 +24,15 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
 
         $http.post('/api/todos', newTodo);
     }
+
+    $scope.completeTodo = function (event, todoId) {
+        console.log(event);
+        console.log(todoId);
+
+        var status = {
+            completed: event
+        }
+
+        $http.post('/api/todos/' + todoId, status);
+    }
 }])

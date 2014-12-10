@@ -29,7 +29,7 @@
         <div class="row">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todos">
-                    <input type="checkbox" ng-model="todo.completed" />
+                    <input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo.completed, todo.id)" name="item_{{ todo.id }}" />
                     <span ng-class="{'completed':todo.completed}">{{ todo.title }}</span>
                 </li>
             </ul>
