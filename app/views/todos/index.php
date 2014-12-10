@@ -28,8 +28,19 @@
         <hr>
 
         <div class="row">
+            <div class="col-md-1">
+                <label for="">Filter</label>
+            </div>
+            <div class="col-md-11">
+                <input type="text" placeholder="Filter" class="col-md-6 form-control" ng-model="search" />
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todos">
+                <li class="list-group-item" ng-repeat="todo in todos | filter:search">
                     <input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo.completed, todo.id)" name="item_{{ todo.id }}" />
                     <span ng-class="{'completed':todo.completed}">{{ todo.title }}</span>
                 </li>
