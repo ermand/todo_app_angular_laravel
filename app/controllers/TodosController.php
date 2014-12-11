@@ -49,6 +49,17 @@ class TodosController extends \BaseController {
     public function update($id)
     {
         $todo = Todo::findOrFail($id);
+
+        if (Input::has('title'))
+        {
+            $todo->title = Input::get('title');
+        }
+
+        if (Input::has('completed'))
+        {
+            $todo->completed = Input::get('completed');
+        }
+
         $todo->completed = Input::get('completed');
         $todo->save();
     }

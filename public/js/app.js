@@ -47,9 +47,9 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
      * @param  boolean event
      * @param  int todoId
      */
-    $scope.completeTodo = function (event, todoId) {
-        console.log(event);
-        console.log(todoId);
+    $scope.completeTodo = function (todoId, event) {
+        // console.log(event);
+        // console.log(todoId);
 
         var status = {
             completed: event
@@ -67,5 +67,19 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
         $scope.todos = $scope.todos.filter(function(item){
             return !item.completed
         });
+    }
+
+    /**
+     * Add new todo item.
+     */
+    $scope.editTodo = function (todoId, title) {
+        console.log(todoId);
+        console.log(title);
+
+        var todo = {
+            title: title,
+        }
+
+        $http.post('/api/todos/' + todoId, todo);
     }
 }])

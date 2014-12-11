@@ -8,9 +8,9 @@
 </head>
 <body>
 <div ng-controller="todoController" class="container">
-    <div class="col-md-6">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
         <h3 class="page-header">
-            My ToDos <small ng-if="remaining()">({{ remaining() }}) remaining</small>
+            <span class="glyphicon glyphicon-th-list"></span> My ToDos <small ng-if="remaining()">({{ remaining() }}) remaining</small>
         </h3>
 
         <form name="form" ng-submit="addTodo()">
@@ -41,8 +41,16 @@
         <div class="row">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todos | filter:search">
-                    <input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo.completed, todo.id)" name="item_{{ todo.id }}" />
-                    <span ng-class="{'completed':todo.completed}">{{ todo.title }}</span>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo.id, todo.completed)" name="item_{{ todo.id }}" />
+                        </span>
+                        <input type="text" class="form-control" ng-model="todo.title" ng-class="{'completed':todo.completed}" ng-disabled="todo.completed">
+                        <span class="input-group-addon">
+                            <a href="#" ng-click="editTodo(todo.id, todo.title)" class="green"><span class="glyphicon glyphicon-edit"></span> edit</a>
+                        </span>
+                    </div>
+
                 </li>
             </ul>
         </div>
