@@ -46,8 +46,8 @@
                             <input type="checkbox" ng-model="todo.completed" ng-change="completeTodo(todo.id, todo.completed)" name="item_{{ todo.id }}" />
                         </span>
                         <input type="text" class="form-control" ng-model="todo.title" ng-class="{'completed':todo.completed}" ng-disabled="todo.completed">
-                        <span class="input-group-addon">
-                            <a href="#" ng-click="editTodo(todo.id, todo.title)" class="green"><span class="glyphicon glyphicon-edit"></span> edit</a>
+                        <span class="input-group-addon" ng-if="!todo.completed">
+                            <a href="#" ng-click="editTodo(todo.id, todo.title)" class="green" ng-disabled="todo.completed"><span class="glyphicon glyphicon-edit"></span> edit</a>
                         </span>
                     </div>
 
