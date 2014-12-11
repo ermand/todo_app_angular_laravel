@@ -1,25 +1,42 @@
-## Laravel PHP Framework
+## ToDo App in Angular and Laravel
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+### Description
+Applications allows to add new ToDo items, complete them, and edit uncompleted ones.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+### Installation
+- Clone application locally.
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+- Go to application's directory
+    > `cd Project/Path`
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+- Run the below composer command in terminal
+    > `composer update`
 
-## Official Documentation
+- Open project in editor and change mysql database credentials in file: `app/config/database.php` line
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+        'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'todos',
+            'username'  => 'root',
+            'password'  => 'secret',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),
 
-### Contributing To Laravel
+- Create a new database named `todos` in your local mysql.
+*__Note:__ Make sure that the database user configured in database.php has access rights on newly created table `todos`*
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+- Run below command for adding tables by laravel migration.
+    > `php artisan migrate`
 
-### License
+- Run below command to seed todos table with some dummy data.
+    > `php artisan db:seed`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+- Open terminal in app folder and run the below command to start artisan's server.
+    > `php artisan serve`
+
+- Open browser to URL: http://localhost:8000/
+
+- ToDo app should be opened and all todos are listed.
