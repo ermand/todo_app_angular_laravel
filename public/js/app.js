@@ -48,9 +48,6 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
      * @param  int todoId
      */
     $scope.completeTodo = function (todoId, event) {
-        // console.log(event);
-        // console.log(todoId);
-
         var status = {
             completed: event
         }
@@ -70,7 +67,7 @@ controller('todoController', ['$scope', '$http', function($scope, $http) {
     }
 
     /**
-     * Add new todo item.
+     * Edit existing todo item.
      */
     $scope.editTodo = function (todoId, title) {
         console.log(todoId);
